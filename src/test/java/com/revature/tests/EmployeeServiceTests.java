@@ -17,53 +17,88 @@ import com.revature.models.Employee;
 import com.revature.service.EmployeeService;
 
 public class EmployeeServiceTests {
-
-	private EmployeeDao mockdao;
 	
+	private EmployeeDao mockdao;
 	private EmployeeService eserv;
+	
 	
 	@Before
 	public void setup() {
+		
 		mockdao = mock(EmployeeDao.class);
 		eserv = new EmployeeService(mockdao);
+		// ^ We are declaring the dependency of the object within the class
+		
 	}
 	
 	@After
 	public void teardown() {
+		
 		eserv = null;
 		mockdao = null;
+		
 	}
 	
-	//happy path scenario
+	// Happy Path Scenario
 	@Test
 	public void testConfirmLogin_success() {
-		//create fake database of employees
+		
+		
+		// we need to create a "fake database" of employee objects
 		Employee e1 = new Employee(3, "Scott", "Lang", "Antman", "bugs");
 		Employee e2 = new Employee(43, "Clint", "Barton", "Hawkeye", "arrows");
 		
 		List<Employee> dummyDb = new ArrayList<>();
-		dummyDb.add(e2);
 		dummyDb.add(e1);
-		
+		dummyDb.add(e2);
+		/**
+		 * What are we expecting when what happens?
+		 * 
+		 * WHEN the service layer calls confirm login with username Hawkeye and password arrows
+		 * THEN we are EXPECTING to return hawkeye
+		 */
 		when(mockdao.findAll()).thenReturn(dummyDb);
 		
-		//expected vs actual
+		// expected, actual
 		assertEquals(e2, eserv.confirmLogin("Hawkeye", "arrows"));
 	}
 	
+	
 	@Test
-	public void testFailLogin_returnNull() {
-		//create fake database of employees
+	public void testFailConfirmLogin_returnNull() {
+		
 		Employee e1 = new Employee(3, "Scott", "Lang", "Antman", "bugs");
 		Employee e2 = new Employee(43, "Clint", "Barton", "Hawkeye", "arrows");
 		
 		List<Employee> dummyDb = new ArrayList<>();
-		dummyDb.add(e2);
 		dummyDb.add(e1);
+		dummyDb.add(e2);
 		
 		when(mockdao.findAll()).thenReturn(dummyDb);
 		
-		assertNull(eserv.confirmLogin("Hawkeye", "swords"));
+		// expected, actual
+		assertNull(eserv.confirmLogin("Hawkeye", "swords")); // this is the wrong password!
+		
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }

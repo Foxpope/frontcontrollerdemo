@@ -11,19 +11,36 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. save URI and rewrite it to determine what functionality the user is requesting
-		final String URI = request.getRequestURI().replace("/FrontControllerDemo", "");
+		
+		// 1. save the URI and rewrite it to determine what functionaloty the user is requesting
+		final String URI = request.getRequestURI().replace("/FrontControllerDemo/", "");
 		
 		switch(URI) {
 		case "login":
-			//call a request helper method
+			
+			// call a method.......from Request Helper
+	
+			
+		
+		
 		}
+		
+	
+		
+		
+		
+		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

@@ -5,24 +5,26 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
-
-	private static Session s;
 	
 	private static SessionFactory sf = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	
+	private static Session ses; // save(), get(), load(), delete()
+	
 	public static Session getSession() {
 		
-		if (s == null) {
-			s = sf.openSession();
+		if (ses == null) {
+			
+			ses = sf.openSession(); // this returns a JDBC connection
+			 
 		}
 		
-		return s;
-		
+		return ses;
 	}
 	
 	public static void closeSes() {
-		s.close();
+		ses.close();
 		sf.close();
+		
 	}
-	
+
 }

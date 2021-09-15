@@ -17,35 +17,35 @@ public class Employee {
 	private int id;
 	
 	@Column
-	private String username;
-	
-	@Column
 	private String firstName;
 	
 	@Column
 	private String lastName;
 	
 	@Column
-	private String password;
+	private String username;
 	
+	@Column
+	private String password;
+
 	public Employee() {
 		super();
 	}
 
-	public Employee(String username, String firstName, String lastName, String password) {
+	public Employee(String firstName, String lastName, String username, String password) {
 		super();
-		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.username = username;
 		this.password = password;
 	}
 
-	public Employee(int id, String username, String firstName, String lastName, String password) {
+	public Employee(int id, String firstName, String lastName, String username, String password) {
 		super();
 		this.id = id;
-		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.username = username;
 		this.password = password;
 	}
 
@@ -55,14 +55,6 @@ public class Employee {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getFirstName() {
@@ -81,12 +73,26 @@ public class Employee {
 		this.lastName = lastName;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
+				+ ", password=" + password + "]";
 	}
 
 	@Override
@@ -134,6 +140,5 @@ public class Employee {
 			return false;
 		return true;
 	}
-	
-	
+
 }
