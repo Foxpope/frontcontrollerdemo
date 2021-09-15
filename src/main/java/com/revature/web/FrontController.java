@@ -19,13 +19,16 @@ public class FrontController extends HttpServlet {
 		
 		switch(URI) {
 		case "login":
-			
-			// call a method.......from Request Helper
+			RequestHelper.processLogin(request, response);
+			break;
 	
 		case "employees":
 			RequestHelper.processEmployees(request, response);
+			break;
 		
-		
+		case "error":
+		default :
+			RequestHelper.processError(request, response);
 		}
 		
 	

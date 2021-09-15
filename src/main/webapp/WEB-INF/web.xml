@@ -17,4 +17,11 @@
     <url-pattern>/employees</url-pattern>
     <url-pattern>/error</url-pattern>
   </servlet-mapping>
+  
+  <!-- this logs the position of the 404 page so it knows where to go when the code is thrown -->
+  <error-page>
+  <error-code>404</error-code>
+  <location>/error</location>
+  </error-page>
+  
 </web-app>
