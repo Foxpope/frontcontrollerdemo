@@ -1,5 +1,6 @@
 package com.revature.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.revature.dao.EmployeeDao;
@@ -29,6 +30,10 @@ public class EmployeeService {
 		
 		// in our web layer we can check IF null returned back
 		
+	}
+	
+	public List<Employee> findAll() {
+		return edao.findAll();
 	}
 
 	public int insert(Employee e) {
